@@ -43,19 +43,121 @@
           />
         </div>
       </div>
+      <div class="home__info">
+        <div class="home__info_main home-im">
+          <div class="home-im__main">
+            <img src="../assets/img/graph.png" alt="" class="home-im__image" />
+            <div class="home-im__content">
+              <h2 class="home-im__title">Bitcoin</h2>
+              <ul class="home-im__content_list">
+                <li class="home-im__content_item">
+                  <p class="item_span">Сложность сети</p>
+                  <div class="item_info bgb">
+                    32,136,448,326,378<span>+32.05 T</span>
+                  </div>
+                </li>
+                <li class="home-im__content_item">
+                  <p class="item_span">Ожидаемая следующая сложность</p>
+                  <div class="item_info bgb">
+                    32,136,448,326,378<span>+0.28% / 32.14 T</span>
+                  </div>
+                </li>
+              </ul>
+              <div class="home-im__content_date">
+                <p class="item_span">Дата следующей сложности</p>
+                <div class="item_info">8 Дней 7 Часов</div>
+              </div>
+              <blue-button>
+                <a href="#" class="all-link">Начать майнинг</a>
+              </blue-button>
+            </div>
+          </div>
+          <div class="home-in__row">
+            <div class="home-in__row_item home-inri">
+              <div class="home-inri__image mon"></div>
+              <div class="home-inri__content">
+                <h4 class="home-inri__title">Ежедневные выплаты</h4>
+                <div class="home-inri__text">
+                  Без минимальной суммы за исключением ETH и ETC
+                </div>
+                <a href="#" class="home-inri__link"
+                  >Начать получать выплаты<svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M4.83882 3.08785C5.06663 2.86004 5.43598 2.86004 5.66378 3.08785L9.16378 6.58785C9.39159 6.81565 9.39159 7.185 9.16378 7.4128L5.66378 10.9128C5.43598 11.1406 5.06663 11.1406 4.83882 10.9128C4.61102 10.685 4.61102 10.3157 4.83882 10.0878L7.92634 7.00033L4.83882 3.9128C4.61102 3.685 4.61102 3.31565 4.83882 3.08785Z"
+                      fill="white"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="home-in__row_item home-inri">
+              <div class="home-inri__image asic"></div>
+              <div class="home-inri__content">
+                <h4 class="home-inri__title">FPPS</h4>
+                <div class="home-inri__text">
+                  Метод вознаграждения за майнинг с наивысшей доходностью
+                </div>
+                <a href="#" class="home-inri__link"
+                  >Подробнее<svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M4.83882 3.08785C5.06663 2.86004 5.43598 2.86004 5.66378 3.08785L9.16378 6.58785C9.39159 6.81565 9.39159 7.185 9.16378 7.4128L5.66378 10.9128C5.43598 11.1406 5.06663 11.1406 4.83882 10.9128C4.61102 10.685 4.61102 10.3157 4.83882 10.0878L7.92634 7.00033L4.83882 3.9128C4.61102 3.685 4.61102 3.31565 4.83882 3.08785Z"
+                      fill="white"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <calculator-view />
+  <pull-static-view />
+  <collective-platform-view />
+  <about-panel-view />
+  <mining-info-view />
 </template>
-<script></script>
+<script>
+import CalculatorView from "@/components/CalculatorView";
+import PullStaticView from "@/components/PullStaticView";
+import CollectivePlatformView from "@/components/CollectivePlatformView";
+import AboutPanelView from "@/components/AboutPanelView";
+import MiningInfoView from "@/components/MiningInfoView";
+export default {
+  components: {
+    CalculatorView,
+    PullStaticView,
+    CollectivePlatformView,
+    AboutPanelView,
+    MiningInfoView,
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 .home {
-  // .home__container
-  &__container {
-  }
+  margin-bottom: 100px;
   // .home__main
   &__main {
     display: flex;
+    margin-bottom: 26%;
   }
   // .home__conent
   &__content {
@@ -159,6 +261,7 @@
   &__background {
     position: relative;
     top: -6em;
+    z-index: -1;
     // .home__background_image
     &_image {
       position: absolute;
@@ -260,6 +363,188 @@
       100% {
         top: 46em;
         right: -14em;
+      }
+    }
+  }
+}
+.home-im {
+  background: rgba(255, 255, 255, 0.29);
+  border-radius: 21px;
+  padding: 17px;
+  // .home-im__main
+  &__main {
+    background: #ffffff;
+    border-radius: 21px;
+    padding: 70px;
+    display: flex;
+    gap: 100px;
+    justify-content: space-between;
+    margin-bottom: 17px;
+  }
+  // .home-im__image
+  &__image {
+    max-width: 550px;
+  }
+  // .home-im__content
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 0 1 50%;
+    // .home-im__content_list
+    &_list {
+    }
+    // .home-im__content_item
+    &_item {
+      &:not(:last-child) {
+        margin-bottom: 12px;
+      }
+    }
+    // .home-im__content_date
+    &_date {
+      flex: 1 1 auto;
+    }
+  }
+  // .home-im__title
+  &__title {
+    font-family: AmpleSoftPro;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 64.4231px;
+    line-height: 107.6%;
+    color: #e9c058;
+  }
+}
+.item {
+  // .item_span
+  &_span {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 143.1%;
+    color: rgba(0, 0, 0, 0.55);
+    margin-bottom: 12px;
+  }
+  // .item_info
+  &_info {
+    font-family: AmpleSoftPro;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 143.1%;
+    color: #000034;
+    display: flex;
+    gap: 18px;
+    & span {
+      color: #e9c058;
+    }
+    &.bgb {
+      position: relative;
+      width: fit-content;
+      &::before {
+        content: "";
+        position: absolute;
+        background: rgba(233, 192, 88, 0.09);
+        border-radius: 53px;
+        width: 112%;
+        height: 110%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}
+.home-in {
+  // .home-in__row
+  &__row {
+    display: flex;
+    gap: 17px;
+    bottom: 100px;
+    // .home-in__row_item
+    &_item {
+      background: #ffffff;
+      border-radius: 21px;
+    }
+  }
+}
+.home-inri {
+  display: flex;
+  align-items: end;
+  flex: 0 1 50%;
+  // .home-inri__image
+  &__image {
+    position: relative;
+    width: 200px;
+    height: 100%;
+    &.mon {
+      &::before {
+        content: "";
+        position: absolute;
+        background-image: url("../assets/img/coins.png");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 213px;
+        height: 275px;
+        bottom: 0;
+        left: 0;
+      }
+    }
+    &.asic {
+      &::before {
+        content: "";
+        position: absolute;
+        background-image: url("../assets/img/asic.png");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 182px;
+        height: 260px;
+        bottom: 0;
+        left: 42px;
+      }
+    }
+  }
+  // .home-inri__content
+  &__content {
+    padding: 50px 30px;
+  }
+  // .home-inri__title
+  &__title {
+    font-family: "AmpleSoftPro";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 31px;
+    line-height: 100%;
+    color: #000034;
+    margin-bottom: 4px;
+  }
+  // .home-inri__text
+  &__text {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 143.1%;
+    color: rgba(0, 0, 0, 0.62);
+    margin-bottom: 26px;
+  }
+  // .home-inri__link
+  &__link {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 107.6%;
+    color: #4181ea;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    & svg path {
+      stroke: #4181ea;
+    }
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration: underline;
       }
     }
   }

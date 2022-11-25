@@ -35,6 +35,12 @@ body {
     #e8ecf2 19.07%
   );
 }
+.all-link {
+  width: 100%;
+  height: 100%;
+  padding: 14px 40px;
+  display: block;
+}
 #app {
   display: flex;
   flex-direction: column;
