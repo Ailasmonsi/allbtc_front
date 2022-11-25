@@ -1,9 +1,9 @@
 <template>
   <div class="nav__links">
     <router-link class="nav__link" to="/">Главная</router-link>
-    <router-link class="nav__link" to="/about">Сложность</router-link>
-    <router-link class="nav__link" to="/custom">FAG</router-link>
-    <router-link class="nav__link" to="/custom">О нас</router-link>
+    <router-link class="nav__link" to="/complexity">Сложность</router-link>
+    <router-link class="nav__link" to="/faqview">FAG</router-link>
+    <router-link class="nav__link" to="/about">О нас</router-link>
   </div>
 </template>
 

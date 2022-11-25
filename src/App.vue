@@ -8,7 +8,9 @@
     <nav-links />
     <a href="#" class="nav__button">Личный кабинет</a>
   </nav>
-  <router-view />
+  <div class="page">
+    <router-view />
+  </div>
 </template>
 
 <script>
@@ -22,7 +24,24 @@ export default {
 </script>
 
 <style lang="scss">
+body {
+  overflow-x: hidden;
+  background: linear-gradient(
+    179.87deg,
+    #e6eaf0 1.02%,
+    #e6eaf1 4.79%,
+    #e7ebf1 8.76%,
+    #eaeef4 14.75%,
+    #e8ecf2 19.07%
+  );
+}
 #app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.page {
+  flex: 1 1 auto;
 }
 .nav__logo {
   max-width: 170px;
@@ -34,6 +53,7 @@ nav {
   align-items: center;
   gap: 50px;
   padding: 30px;
+  width: 100%;
   a {
     font-weight: bold;
     color: #2c3e50;

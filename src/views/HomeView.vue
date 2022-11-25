@@ -14,10 +14,39 @@
             <div class="home__button_propeller"></div
           ></a>
         </div>
+
+        <div class="home__background">
+          <img
+            class="home__background_image home__background_1"
+            src="../assets/img/main_an_img_1.png"
+            alt=""
+          />
+          <img
+            class="home__background_image home__background_2"
+            src="../assets/img/main_an_img_2.png"
+            alt=""
+          />
+          <img
+            class="home__background_image home__background_3"
+            src="../assets/img/main_an_img_3.png"
+            alt=""
+          />
+          <img
+            class="home__background_image home__background_4"
+            src="../assets/img/main_an_img_4.png"
+            alt=""
+          />
+          <img
+            class="home__background_image home__background_5"
+            src="../assets/img/main_an_img_5.png"
+            alt=""
+          />
+        </div>
       </div>
     </div>
   </div>
 </template>
+<script></script>
 
 <style lang="scss" scoped>
 .home {
@@ -26,6 +55,7 @@
   }
   // .home__main
   &__main {
+    display: flex;
   }
   // .home__conent
   &__content {
@@ -122,6 +152,114 @@
         100% {
           transform: translate(-50%, -50%) rotate(720deg);
         }
+      }
+    }
+  }
+  // .home__background
+  &__background {
+    position: relative;
+    top: -6em;
+    // .home__background_image
+    &_image {
+      position: absolute;
+    }
+    // .home__background_1
+    &_1 {
+      animation-name: keyshow1;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+    }
+    // .home__background_2
+    &_2 {
+      animation-name: keyshow2;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+    }
+    // .home__background_3
+    &_3 {
+      animation-name: keyshow3;
+      animation-duration: 1.1s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+    }
+    // .home__background_4
+    &_4 {
+      animation-name: keyshow4;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+    }
+    // .home__background_5
+    &_5 {
+      top: 30em;
+      right: -29em;
+      animation-name: imag5;
+      animation-duration: 7s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+    @keyframes imag5 {
+      0% {
+        top: 30em;
+        right: -29em;
+      }
+      25% {
+        top: 32em;
+        right: -26em;
+      }
+      50% {
+        top: 30em;
+        right: -29em;
+      }
+      75% {
+        top: 28em;
+        right: -32em;
+      }
+      100% {
+        top: 30em;
+        right: -29em;
+      }
+    }
+    @keyframes keyshow1 {
+      0% {
+        left: 40vw;
+        top: 100vh;
+      }
+      100% {
+        left: 0;
+        top: 0;
+      }
+    }
+    @keyframes keyshow2 {
+      0% {
+        right: -80em;
+        top: 100em;
+      }
+      100% {
+        top: 30em;
+        right: -15em;
+      }
+    }
+    @keyframes keyshow3 {
+      0% {
+        right: -90em;
+        top: 100em;
+      }
+      100% {
+        top: 43em;
+        right: -33em;
+      }
+    }
+    @keyframes keyshow4 {
+      0% {
+        right: -70em;
+        top: 100em;
+      }
+      100% {
+        top: 46em;
+        right: -14em;
       }
     }
   }
