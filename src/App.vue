@@ -60,14 +60,6 @@ nav {
   gap: 50px;
   padding: 30px;
   width: 100%;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 .nav__button {
   font-style: normal;
@@ -79,5 +71,11 @@ nav {
   border-radius: 5px;
   padding: 11px 36px;
   white-space: nowrap;
+  transition: all 0.3s ease 0s;
+  @media (any-hover: hover) {
+    &:hover {
+      background: rgba(194, 213, 242);
+    }
+  }
 }
 </style>
