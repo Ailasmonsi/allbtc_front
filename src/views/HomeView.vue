@@ -15,7 +15,7 @@
           ></a>
         </div>
 
-        <div class="home__background">
+        <div v-if="viewportWidth >= 991.98" class="home__background">
           <img
             class="home__background_image home__background_1"
             src="../assets/img/main_an_img_1.png"
@@ -39,6 +39,13 @@
           <img
             class="home__background_image home__background_5"
             src="../assets/img/main_an_img_5.png"
+            alt=""
+          />
+        </div>
+        <div v-else class="home__background">
+          <img
+            class="home__background_image"
+            src="../assets/img/main_an_img_full.png"
             alt=""
           />
         </div>
@@ -148,6 +155,20 @@ export default {
     AboutPanelView,
     MiningInfoView,
   },
+  data() {
+    return {
+      viewportWidth: 0,
+    };
+  },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  },
+  methods: {
+    handleResize() {
+      this.viewportWidth = window.innerWidth;
+    },
+  },
 };
 </script>
 
@@ -157,16 +178,34 @@ export default {
   // .home__main
   &__main {
     display: flex;
-    margin-bottom: 26%;
+    margin-bottom: 14em;
+    @media (max-width: 991.98px) {
+      flex-direction: column;
+      margin-bottom: unset;
+    }
   }
   // .home__conent
   &__content {
     max-width: 670px;
     margin-top: 160px;
+    @media (max-width: 991.98px) {
+      margin-top: 48px;
+      text-align: center;
+    }
+    @media (max-width: 767.98px) {
+      margin-top: 24px;
+    }
   }
   // .home__title
   &__title {
     margin-bottom: 20px;
+    @media (max-width: 1270px) {
+      margin-bottom: 16px;
+    }
+    @media (max-width: 479.98px) {
+      font-size: 35px;
+      line-height: 107.6%;
+    }
   }
   // .home__span
   &__span {
@@ -176,6 +215,9 @@ export default {
     line-height: 143.1%;
     color: #000000;
     margin-bottom: 36px;
+    @media (max-width: 1270px) {
+      margin-bottom: 28px;
+    }
   }
   // .home__button
   &__button {
@@ -204,6 +246,26 @@ export default {
           left: 0;
         }
       }
+    }
+    @media (max-width: 1270px) {
+      height: 74px;
+      width: 266px;
+      gap: 26px;
+      font-size: 20px;
+      line-height: 22px;
+    }
+    @media (max-width: 991.98px) {
+      margin: 0 auto;
+    }
+    @media (max-width: 767.98px) {
+      height: 74px;
+      width: 266px;
+      gap: 32px;
+      font-size: 16px;
+      line-height: 107%;
+    }
+    @media (max-width: 479.98px) {
+      height: 65px;
     }
     &::before {
       content: "";
@@ -255,44 +317,104 @@ export default {
           transform: translate(-50%, -50%) rotate(720deg);
         }
       }
+      @media (max-width: 1270px) {
+        width: 45px;
+        height: 45px;
+        &::before {
+          width: 30px;
+          height: 30px;
+        }
+      }
+      @media (max-width: 767.98px) {
+        width: 39px;
+        height: 39px;
+        &::before {
+          width: 26px;
+          height: 26px;
+        }
+      }
     }
   }
   // .home__background
   &__background {
     position: relative;
-    top: -6em;
+    top: -3em;
     z-index: -1;
+    @media (max-width: 1270px) {
+      top: -7em;
+      left: -5em;
+      transform: scale(0.7);
+    }
+    @media (max-width: 991.98px) {
+      transform: scale(1);
+      top: unset;
+      left: unset;
+    }
     // .home__background_image
     &_image {
       position: absolute;
+      @media (max-width: 991.98px) {
+        position: relative;
+        max-width: 722px;
+        object-fit: cover;
+        object-position: center;
+        left: 50%;
+        transform: translate(-50%, 5%);
+        // top: 50%;
+        // left: -50%;
+      }
     }
     // .home__background_1
     &_1 {
-      animation-name: keyshow1;
-      animation-duration: 1s;
-      animation-timing-function: ease;
-      animation-fill-mode: forwards;
+      @media (min-width: 1270px) {
+        animation-name: keyshow1;
+        animation-duration: 1s;
+        animation-timing-function: ease;
+        animation-fill-mode: forwards;
+      }
+      @media (max-width: 1270px) {
+        left: 0;
+        top: 0;
+      }
     }
     // .home__background_2
     &_2 {
-      animation-name: keyshow2;
-      animation-duration: 1s;
-      animation-timing-function: ease;
-      animation-fill-mode: forwards;
+      @media (min-width: 1270px) {
+        animation-name: keyshow2;
+        animation-duration: 1s;
+        animation-timing-function: ease;
+        animation-fill-mode: forwards;
+      }
+      @media (max-width: 1270px) {
+        top: 30em;
+        right: -15em;
+      }
     }
     // .home__background_3
     &_3 {
-      animation-name: keyshow3;
-      animation-duration: 1.1s;
-      animation-timing-function: ease;
-      animation-fill-mode: forwards;
+      @media (min-width: 1270px) {
+        animation-name: keyshow3;
+        animation-duration: 1.1s;
+        animation-timing-function: ease;
+        animation-fill-mode: forwards;
+      }
+      @media (max-width: 1270px) {
+        top: 43em;
+        right: -33em;
+      }
     }
     // .home__background_4
     &_4 {
-      animation-name: keyshow4;
-      animation-duration: 1s;
-      animation-timing-function: ease;
-      animation-fill-mode: forwards;
+      @media (min-width: 1270px) {
+        animation-name: keyshow4;
+        animation-duration: 1s;
+        animation-timing-function: ease;
+        animation-fill-mode: forwards;
+      }
+      @media (max-width: 1270px) {
+        top: 46em;
+        right: -14em;
+      }
     }
     // .home__background_5
     &_5 {
@@ -373,17 +495,49 @@ export default {
   padding: 17px;
   // .home-im__main
   &__main {
+    position: relative;
     background: #ffffff;
     border-radius: 21px;
     padding: 70px;
     display: flex;
+    align-items: end;
     gap: 100px;
     justify-content: space-between;
     margin-bottom: 17px;
+    @media (max-width: 1270px) {
+    }
+    @media (max-width: 991.98px) {
+      padding: 26px 16px;
+    }
+    &::before {
+      content: "";
+      background-image: url("../assets/img/bitcoin.png");
+      position: absolute;
+      width: 500px;
+      height: 530px;
+      bottom: 10em;
+      left: 5em;
+      animation-name: plane-soaring;
+      animation-duration: 5s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+    }
+    @keyframes plane-soaring {
+      0% {
+        transform: translate(0, 0);
+      }
+      50% {
+        transform: translate(0, 15px);
+      }
+      100% {
+        transform: translate(0px, 0px);
+      }
+    }
   }
   // .home-im__image
   &__image {
     max-width: 550px;
+    object-fit: contain;
   }
   // .home-im__content
   &__content {

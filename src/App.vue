@@ -5,8 +5,20 @@
       src="@/assets/img/logo_high_quality.png"
       alt="logo"
     />
-    <nav-links />
-    <a href="#" class="nav__button">Личный кабинет</a>
+    <nav-links v-if="viewportWidth >= 767.98" />
+    <a v-if="viewportWidth >= 991.98" href="#" class="nav__button">
+      Личный кабинет
+    </a>
+    <div v-else class="nav__buttons_mobile">
+      <a class="nav__button_mobile" href="#"
+        ><img src="./assets/img/user.svg" alt="" />
+      </a>
+      <div v-if="viewportWidth < 767.98" class="nav__burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
   </nav>
   <div class="page">
     <router-view />
@@ -20,12 +32,26 @@ export default {
   components: {
     NavLinks,
   },
+  data() {
+    return {
+      viewportWidth: 0,
+    };
+  },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  },
+  methods: {
+    handleResize() {
+      this.viewportWidth = window.innerWidth;
+    },
+  },
 };
 </script>
 
 <style lang="scss">
 body {
-  overflow-x: hidden;
+  width: 100vw;
   background: linear-gradient(
     179.87deg,
     #e6eaf0 1.02%,
@@ -51,6 +77,9 @@ body {
 }
 .nav__logo {
   max-width: 170px;
+  @media (max-width: 767.98px) {
+    max-width: 138px;
+  }
 }
 nav {
   padding-top: 40px;
@@ -58,8 +87,34 @@ nav {
   justify-content: space-between;
   align-items: center;
   gap: 50px;
-  padding: 30px;
   width: 100%;
+  box-sizing: border-box !important;
+  @media (max-width: 767.98px) {
+    gap: 15px;
+  }
+}
+.nav__buttons_mobile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  & .nav__burger {
+    background: #4182ec;
+    border-radius: 5px;
+    width: 60px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4px;
+    & span {
+      display: flex;
+      width: 18px;
+      height: 1.5px;
+      background-color: #fff;
+      border-radius: 5px;
+    }
+  }
 }
 .nav__button {
   font-style: normal;
@@ -75,6 +130,22 @@ nav {
   @media (any-hover: hover) {
     &:hover {
       background: rgba(194, 213, 242);
+    }
+  }
+  &_mobile {
+    background: rgba(194, 213, 242, 0.61);
+    border-radius: 5px;
+    width: 60px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    transition: all 0.3s ease 0s;
+    @media (any-hover: hover) {
+      &:hover {
+        background: rgba(194, 213, 242);
+      }
     }
   }
 }

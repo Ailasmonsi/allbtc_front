@@ -103,7 +103,8 @@ a:active {
 html,
 body {
   height: 100%;
-  min-width: $minWidth + px;
+  min-width: $minWidth;
+  overflow-x: hidden;
 }
 body {
   color: $mainColor;
@@ -207,6 +208,10 @@ h6 {
     font-size: 64px;
     line-height: 107.6%;
     color: #000034;
+    @media (max-width: $pc) {
+      font-size: 48px;
+      line-height: 52px;
+    }
   }
   // .main__text
   &__text {
