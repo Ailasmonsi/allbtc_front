@@ -3,7 +3,12 @@
     <div class="graph__main">
       <div class="graph__list">
         <div v-for="graph in graphs" :key="graph.id" class="graph__item">
-          <canvas id="myChart"></canvas>
+          <div class="graph__con">
+            <div class="graph__title">{{ graph.title }}</div>
+            <div class="graph__graph">
+              <canvas id="myChart"></canvas>
+            </div>
+          </div>
           <div class="graph__item_about graph-ia">
             <ul class="graph-ia__list">
               <li
@@ -101,6 +106,25 @@ export default {
     border-radius: 21px;
     padding: 17px;
   }
+  // .graph__con
+  &__con {
+    display: flex;
+    align-items: center;
+  }
+  // .graph__graph
+  &__graph {
+    flex: 1 1 auto;
+  }
+  // .graph__title
+  &__title {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 143.1%;
+    color: rgba(0, 0, 0, 0.4);
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+  }
   // .graph__list
   &__list {
     display: flex;
@@ -111,7 +135,7 @@ export default {
     background: #ffffff;
     border-radius: 21px;
     flex: 0 1 50%;
-    padding: 28px 16px;
+    padding: 28px 36px;
   }
 }
 .graph-ia {
@@ -124,8 +148,9 @@ export default {
   }
   // .graph-ia__item
   &__item {
-    display: grid;
-    grid-template-columns: 1fr auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     // .graph-ia__item_title
     &_title {
       font-style: normal;

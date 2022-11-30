@@ -15,15 +15,17 @@
         </div>
       </div>
       <BarChart :graphs="graphs" />
+      <statistics-view :table="table" />
     </div>
   </div>
 </template>
 
 <script>
 import BarChart from "@/components/BarChart";
+import StatisticsView from "@/components/StatisticsView";
 
 export default {
-  components: { BarChart },
+  components: { BarChart, StatisticsView },
   data() {
     return {
       graphs: [
@@ -64,6 +66,79 @@ export default {
           ],
         },
       ],
+      table: {
+        titles: [
+          "Высота блока",
+          "Время блока",
+          "Сложность",
+          "Изменение",
+          "Bits",
+          "В среднем на блок",
+          "Средний хэшрейт",
+        ],
+        rows: [
+          {
+            id: 1000,
+            height: "747,936",
+            time: "2022-08-04 17:54:43",
+            complexity: { main: "28,174,668,481,289 - ", span: "28.17 T" },
+            change: "+ 1.74 %",
+            bits: "0x1709fd7e",
+            average: "09 мин 50 с",
+            hashrate: "201.43 EH/s",
+          },
+          {
+            id: 1001,
+            height: "747,936",
+            time: "2022-08-04 17:54:43",
+            complexity: { main: "28,174,668,481,289 - ", span: "28.17 T" },
+            change: "+ 1.74 %",
+            bits: "0x1709fd7e",
+            average: "09 мин 50 с",
+            hashrate: "201.43 EH/s",
+          },
+          {
+            id: 1002,
+            height: "747,936",
+            time: "2022-08-04 17:54:43",
+            complexity: { main: "28,174,668,481,289 - ", span: "28.17 T" },
+            change: "+ 1.74 %",
+            bits: "0x1709fd7e",
+            average: "09 мин 50 с",
+            hashrate: "201.43 EH/s",
+          },
+          {
+            id: 1003,
+            height: "747,936",
+            time: "2022-08-04 17:54:43",
+            complexity: { main: "28,174,668,481,289 - ", span: "28.17 T" },
+            change: "+ 1.74 %",
+            bits: "0x1709fd7e",
+            average: "09 мин 50 с",
+            hashrate: "201.43 EH/s",
+          },
+          {
+            id: 1004,
+            height: "747,936",
+            time: "2022-08-04 17:54:43",
+            complexity: { main: "28,174,668,481,289 - ", span: "28.17 T" },
+            change: "+ 1.74 %",
+            bits: "0x1709fd7e",
+            average: "09 мин 50 с",
+            hashrate: "201.43 EH/s",
+          },
+          {
+            id: 1005,
+            height: "747,936",
+            time: "2022-08-04 17:54:43",
+            complexity: { main: "28,174,668,481,289 - ", span: "28.17 T" },
+            change: "+ 1.74 %",
+            bits: "0x1709fd7e",
+            average: "09 мин 50 с",
+            hashrate: "201.43 EH/s",
+          },
+        ],
+      },
     };
   },
 };
@@ -85,14 +160,14 @@ export default {
   &__title {
     margin-bottom: 24px;
   }
-  // .complexity__text
-  &__text {
-  }
   // .complexity__image
   &__image {
     & img {
       max-width: 1050px;
     }
   }
+}
+.graph {
+  margin-bottom: 50px;
 }
 </style>
