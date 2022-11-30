@@ -51,8 +51,11 @@
         </div>
       </div>
       <div class="home__info">
-        <div class="home__info_main home-im">
+        <div class="home__info_main home-im bagr-t">
           <div class="home-im__main">
+            <blue-button v-if="viewportWidth < 991.98">
+              <a href="#" class="all-link">Начать майнинг</a>
+            </blue-button>
             <img src="../assets/img/graph.png" alt="" class="home-im__image" />
             <div class="home-im__content">
               <h2 class="home-im__title">Bitcoin</h2>
@@ -70,11 +73,12 @@
                   </div>
                 </li>
               </ul>
+
               <div class="home-im__content_date">
                 <p class="item_span">Дата следующей сложности</p>
                 <div class="item_info">8 Дней 7 Часов</div>
               </div>
-              <blue-button>
+              <blue-button v-if="viewportWidth >= 991.98">
                 <a href="#" class="all-link">Начать майнинг</a>
               </blue-button>
             </div>
@@ -173,6 +177,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.bagr-t {
+  @media (max-width: 479.98px) {
+    margin: 0 -15px;
+  }
+}
 .home {
   margin-bottom: 100px;
   // .home__main
@@ -504,16 +513,14 @@ export default {
     gap: 100px;
     justify-content: space-between;
     margin-bottom: 17px;
-    @media (max-width: 1270px) {
-    }
-    @media (max-width: 991.98px) {
-      padding: 26px 16px;
-    }
     &::before {
       content: "";
       background-image: url("../assets/img/bitcoin.png");
       position: absolute;
       width: 500px;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
       height: 530px;
       bottom: 10em;
       left: 5em;
@@ -522,6 +529,34 @@ export default {
       animation-iteration-count: infinite;
       animation-timing-function: ease-in-out;
     }
+    @media (max-width: 1270px) {
+      gap: 36px;
+      padding: 26px 16px;
+      & .home-im__image {
+        max-width: 500px;
+      }
+      &::before {
+        width: 450px;
+        height: 460px;
+        bottom: 7em;
+        left: 1em;
+      }
+    }
+    @media (max-width: 991.98px) {
+      flex-direction: column-reverse;
+      align-items: center;
+      & .home-im__content {
+        width: 100%;
+        padding: 0 18px;
+      }
+      &::before {
+        display: none;
+      }
+    }
+    @media (max-width: 479.98px) {
+      gap: 26px;
+    }
+
     @keyframes plane-soaring {
       0% {
         transform: translate(0, 0);
@@ -538,6 +573,11 @@ export default {
   &__image {
     max-width: 550px;
     object-fit: contain;
+    @media (max-width: 991.98px) {
+      max-width: unset;
+      width: 100%;
+      object-fit: cover;
+    }
   }
   // .home-im__content
   &__content {
@@ -545,13 +585,25 @@ export default {
     flex-direction: column;
     gap: 12px;
     flex: 0 1 50%;
+    @media (max-width: 1270px) {
+      //flex: 1 1 auto;
+    }
     // .home-im__content_list
     &_list {
+      @media (max-width: 991.98px) {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 48px;
+        justify-content: space-between;
+      }
     }
     // .home-im__content_item
     &_item {
       &:not(:last-child) {
         margin-bottom: 12px;
+      }
+      @media (max-width: 479.98px) {
+        width: 100%;
       }
     }
     // .home-im__content_date
@@ -567,6 +619,53 @@ export default {
     font-size: 64.4231px;
     line-height: 107.6%;
     color: #e9c058;
+    position: relative;
+    display: flex;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 51px;
+      height: 51px;
+      background-image: url("../assets/img/orange-propeller-icon.svg");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      top: 50%;
+      left: -1em;
+      transform: translate(0, -45%);
+      @media (max-width: 991.98px) {
+        position: relative;
+        top: 0;
+        left: -10px;
+        transform: translate(0, 20%);
+      }
+      @media (max-width: 767.98px) {
+        width: 37px;
+        height: 37px;
+      }
+    }
+    &::after {
+      content: "228.17 EH/s";
+      position: relative;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 143.1%;
+      color: #000000;
+      right: -14px;
+    }
+    @media (max-width: 991.98px) {
+      padding-left: 10px;
+    }
+    @media (max-width: 767.98px) {
+      font-size: 45px;
+      line-height: 107.6%;
+      &::after {
+        font-size: 13px;
+        line-height: 143.1%;
+        right: -6px;
+      }
+    }
   }
 }
 .item {
@@ -588,7 +687,16 @@ export default {
     line-height: 143.1%;
     color: #000034;
     display: flex;
-    gap: 18px;
+    column-gap: 18px;
+    @media (max-width: 991.98px) {
+      font-size: 18px;
+      line-height: 143.1%;
+      @media (max-width: 479.98px) {
+        width: 100% !important;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
     & span {
       color: #e9c058;
     }
@@ -619,6 +727,21 @@ export default {
     &_item {
       background: #ffffff;
       border-radius: 21px;
+      transition: all 0.3s ease 0s;
+      @media (any-hover: hover) {
+        &:hover {
+          background: #3f65b3;
+          & .home-inri__title {
+            color: #ffffff;
+          }
+          & .home-inri__text {
+            color: rgba(255, 255, 255, 0.68);
+          }
+          & .home-inri__link {
+            color: #ffffff;
+          }
+        }
+      }
     }
   }
 }
@@ -673,6 +796,7 @@ export default {
     line-height: 100%;
     color: #000034;
     margin-bottom: 4px;
+    transition: all 0.5s ease 0s;
   }
   // .home-inri__text
   &__text {
@@ -682,6 +806,7 @@ export default {
     line-height: 143.1%;
     color: rgba(0, 0, 0, 0.62);
     margin-bottom: 26px;
+    transition: all 0.5s ease 0s;
   }
   // .home-inri__link
   &__link {
@@ -693,6 +818,8 @@ export default {
     display: flex;
     align-items: center;
     gap: 10px;
+    transition: all 0.5s ease 0s;
+    width: fit-content;
     & svg path {
       stroke: #4181ea;
     }
