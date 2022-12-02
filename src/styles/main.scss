@@ -191,7 +191,7 @@ h6 {
     @media (max-width: $mobile) {
       max-width: none;
       @if ($containerPadding>0 and $maxWidthContainer>0) {
-        padding: $containerPadding / 2 + px;
+        padding: 0 $containerPadding / 2 + px;
       }
     }
   }

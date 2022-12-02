@@ -109,7 +109,7 @@
                 </a>
               </div>
             </div>
-            <div class="home-in__row_item home-inri">
+            <div class="home-in__row_item home-inri asic__con">
               <div class="home-inri__image asic"></div>
               <div class="home-inri__content">
                 <h4 class="home-inri__title">FPPS</h4>
@@ -184,6 +184,16 @@ export default {
 }
 .home {
   margin-bottom: 100px;
+  @media (max-width: 1270px) {
+    margin-bottom: 40px;
+  }
+  @media (max-width: 767.98px) {
+    margin-bottom: 30px;
+  }
+  @media (max-width: 479.98px) {
+    margin-bottom: 16px;
+  }
+
   // .home__main
   &__main {
     display: flex;
@@ -193,13 +203,14 @@ export default {
       margin-bottom: unset;
     }
   }
-  // .home__conent
+  // .home__content
   &__content {
     max-width: 670px;
     margin-top: 160px;
     @media (max-width: 991.98px) {
       margin-top: 48px;
       text-align: center;
+      max-width: unset;
     }
     @media (max-width: 767.98px) {
       margin-top: 24px;
@@ -723,6 +734,9 @@ export default {
     display: flex;
     gap: 17px;
     bottom: 100px;
+    @media (max-width: 991.98px) {
+      flex-direction: column;
+    }
     // .home-in__row_item
     &_item {
       background: #ffffff;
@@ -739,6 +753,39 @@ export default {
           }
           & .home-inri__link {
             color: #ffffff;
+            & svg path {
+              stroke: #fff;
+            }
+          }
+        }
+      }
+      @media (max-width: 767.98px) {
+        background: #3f65b3;
+        & .home-inri__title {
+          color: #ffffff;
+        }
+        & .home-inri__text {
+          color: rgba(255, 255, 255, 0.68);
+        }
+        & .home-inri__link {
+          color: #ffffff;
+          & svg path {
+            stroke: #fff;
+          }
+        }
+        &.asic__con {
+          background: #ffffff;
+          & .home-inri__title {
+            color: #000034;
+          }
+          & .home-inri__text {
+            color: rgba(0, 0, 0, 0.62);
+          }
+          & .home-inri__link {
+            color: #4181ea;
+            & svg path {
+              stroke: #4181ea;
+            }
           }
         }
       }
@@ -749,11 +796,21 @@ export default {
   display: flex;
   align-items: end;
   flex: 0 1 50%;
+  @media (max-width: 991.98px) {
+    flex: 1 1 auto;
+  }
+  @media (max-width: 479.98px) {
+    flex-direction: column;
+    align-items: center;
+  }
   // .home-inri__image
   &__image {
     position: relative;
     width: 200px;
     height: 100%;
+    @media (max-width: 479.98px) {
+      height: 150px;
+    }
     &.mon {
       &::before {
         content: "";
@@ -766,6 +823,17 @@ export default {
         height: 275px;
         bottom: 0;
         left: 0;
+        @media (max-width: 1270px) {
+          width: 165px;
+          height: 280px;
+        }
+        @media (max-width: 479.98px) {
+          left: 50%;
+          top: -55%;
+          transform: translate(-50%, 0);
+          width: 155px;
+          height: 260px;
+        }
       }
     }
     &.asic {
@@ -780,13 +848,31 @@ export default {
         height: 260px;
         bottom: 0;
         left: 42px;
+        @media (max-width: 1270px) {
+          bottom: 6px;
+          left: 31px;
+        }
+        @media (max-width: 767.98px) {
+          width: 150px;
+        }
+        @media (max-width: 479.98px) {
+          bottom: -20px;
+          left: 25%;
+        }
       }
     }
   }
   // .home-inri__content
   &__content {
     padding: 50px 30px;
+    @media (max-width: 767.98px) {
+      flex: 0 0 70%;
+    }
+    @media (max-width: 479.98px) {
+      padding: 0px 30px 36px;
+    }
   }
+
   // .home-inri__title
   &__title {
     font-family: "AmpleSoftPro";
@@ -797,6 +883,11 @@ export default {
     color: #000034;
     margin-bottom: 4px;
     transition: all 0.5s ease 0s;
+    @media (max-width: 479.98px) {
+      font-size: 22px;
+      line-height: 100%;
+      margin-bottom: 10px;
+    }
   }
   // .home-inri__text
   &__text {
@@ -807,6 +898,9 @@ export default {
     color: rgba(0, 0, 0, 0.62);
     margin-bottom: 26px;
     transition: all 0.5s ease 0s;
+    @media (max-width: 479.98px) {
+      margin-bottom: 16px;
+    }
   }
   // .home-inri__link
   &__link {
@@ -820,14 +914,39 @@ export default {
     gap: 10px;
     transition: all 0.5s ease 0s;
     width: fit-content;
-    & svg path {
-      stroke: #4181ea;
+    & svg {
+      position: relative;
+      transition: all 0.3s ease 0s;
+      & path {
+        stroke: #4181ea;
+      }
     }
     @media (any-hover: hover) {
       &:hover {
         text-decoration: underline;
+        & svg {
+          transform: translate(4px, 0);
+        }
       }
     }
   }
+}
+.asic__con {
+  @media (max-width: 479.98px) {
+    flex-direction: column-reverse;
+    & .home-inri__content {
+      padding: 36px 30px 0px;
+    }
+    & .asic {
+      height: 170px;
+    }
+  }
+}
+.all-link {
+  position: relative;
+  z-index: 5;
+}
+.blue-button {
+  margin-bottom: 10px;
 }
 </style>

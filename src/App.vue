@@ -89,6 +89,10 @@ nav {
   gap: 50px;
   width: 100%;
   box-sizing: border-box !important;
+  margin: 15px auto !important;
+  @media (max-width: 991.98px) {
+    padding-top: 0;
+  }
   @media (max-width: 767.98px) {
     gap: 15px;
   }
@@ -111,6 +115,7 @@ nav {
       display: flex;
       width: 18px;
       height: 1.5px;
+      flex: 0 0 1.5px;
       background-color: #fff;
       border-radius: 5px;
     }
@@ -145,6 +150,49 @@ nav {
     @media (any-hover: hover) {
       &:hover {
         background: rgba(194, 213, 242);
+      }
+    }
+  }
+}
+.swiper {
+  padding-bottom: 48px !important;
+  .swiper-pagination {
+    .swiper-pagination-bullet {
+      position: relative;
+      width: 21px;
+      height: 21px;
+      overflow: hidden;
+      opacity: 1;
+      background: transparent;
+      border-radius: 3px;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 5px solid rgba(63, 123, 222, 0.16);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 8px solid #3f7bde;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s ease 0s;
+        opacity: 0;
+        visibility: hidden;
+      }
+      &.swiper-pagination-bullet-active {
+        &::after {
+          opacity: 1;
+          visibility: visible;
+        }
       }
     }
   }

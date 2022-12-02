@@ -122,11 +122,21 @@ export default {};
   background: rgba(255, 255, 255, 0.29);
   border-radius: 21px;
   padding: 17px;
+  @media (max-width: 767.98px) {
+    margin: 0 -15px;
+    background-color: transparent;
+  }
   // .mining-im__con
   &__con {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 17px;
+    @media (max-width: 1270px) {
+      grid-template-columns: 1fr;
+    }
+    @media (max-width: 767.98px) {
+      gap: 0;
+    }
   }
   // .mining-im__general
   &__general {
@@ -134,10 +144,36 @@ export default {};
     border-radius: 21px;
     display: flex;
     flex-direction: column;
+    @media (max-width: 1270px) {
+      flex-direction: row;
+      align-items: center;
+    }
+    @media (max-width: 767.98px) {
+      border-radius: 10px;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 105%;
+        height: 122%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 255, 255, 0.29);
+        border-radius: 10px;
+        z-index: -1;
+      }
+    }
+    @media (max-width: 550px) {
+      flex-direction: column;
+    }
     // .mining-im__general_content
     &_content {
       padding: 35px 48px 0;
       flex: 1 1 auto;
+      @media (max-width: 1270px) {
+        padding: 33px 30px;
+      }
     }
     // .mining-im__general_title
     &_title {
@@ -159,11 +195,18 @@ export default {};
       display: flex;
       align-items: center;
       gap: 10px;
-      & svg path {
-        stroke: #fff;
+      & svg {
+        position: relative;
+        transition: all 0.3s ease 0s;
+        & path {
+          stroke: #fff;
+        }
       }
       @media (any-hover: hover) {
         &:hover {
+          & svg {
+            transform: translate(4px, 0);
+          }
           text-decoration: underline;
         }
       }
@@ -171,6 +214,17 @@ export default {};
     // .mining-im__general_image
     &_image {
       max-width: 400px;
+      @media (max-width: 1270px) {
+        max-width: 300px;
+      }
+      @media (max-width: 767.98px) {
+        max-width: 235px;
+      }
+      @media (max-width: 550px) {
+        max-width: 280px;
+        margin-top: -22px;
+      }
+
       // .mining-im__general_image_con
       &_con {
         display: flex;
@@ -183,18 +237,48 @@ export default {};
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 17px;
+    @media (max-width: 767.98px) {
+      display: block;
+    }
   }
   // .mining-im__item
   &__item {
     background: #ffffff;
     border-radius: 21px;
     padding: 34px 45px;
+    @media (max-width: 767.98px) {
+      padding: 26px 30px;
+      &:first-child {
+        margin-top: 44px;
+      }
+      &:not(:last-child) {
+        margin-bottom: 44px;
+      }
+      border-radius: 10px;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 105%;
+        height: 122%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 255, 255, 0.29);
+        border-radius: 10px;
+        z-index: -1;
+      }
+    }
+
     // .mining-im__item_top
     &_top {
       display: flex;
       align-items: start;
       gap: 15px;
       margin-bottom: 12px;
+      @media (max-width: 1270px) {
+        align-items: center;
+      }
     }
     // .mining-im__item_icon
     &_icon {
