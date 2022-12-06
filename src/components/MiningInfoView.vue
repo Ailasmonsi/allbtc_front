@@ -134,9 +134,6 @@ export default {};
     @media (max-width: 1270px) {
       grid-template-columns: 1fr;
     }
-    @media (max-width: 767.98px) {
-      gap: 0;
-    }
   }
   // .mining-im__general
   &__general {
@@ -238,7 +235,8 @@ export default {};
     grid-template-columns: repeat(2, 1fr);
     gap: 17px;
     @media (max-width: 767.98px) {
-      display: block;
+      display: flex;
+      flex-direction: column;
     }
   }
   // .mining-im__item
@@ -248,26 +246,7 @@ export default {};
     padding: 34px 45px;
     @media (max-width: 767.98px) {
       padding: 26px 30px;
-      &:first-child {
-        margin-top: 44px;
-      }
-      &:not(:last-child) {
-        margin-bottom: 44px;
-      }
       border-radius: 10px;
-      position: relative;
-      &::before {
-        content: "";
-        position: absolute;
-        width: 105%;
-        height: 122%;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(255, 255, 255, 0.29);
-        border-radius: 10px;
-        z-index: -1;
-      }
     }
 
     // .mining-im__item_top

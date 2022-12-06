@@ -256,6 +256,7 @@ export default {
     background: linear-gradient(84.14deg, #3f7bdd 8.75%, #4282ec 92.01%);
     border-radius: 10px;
     position: relative;
+    z-index: 5;
     transition: all 0.3s ease 0s;
     @media (any-hover: hover) {
       &:hover {
@@ -359,7 +360,6 @@ export default {
   &__background {
     position: relative;
     top: -3em;
-    z-index: -1;
     @media (max-width: 1270px) {
       top: -7em;
       left: -5em;

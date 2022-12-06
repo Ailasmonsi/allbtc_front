@@ -50,8 +50,11 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-  width: 100vw;
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
   background: linear-gradient(
     179.87deg,
     #e6eaf0 1.02%,
@@ -66,11 +69,6 @@ body {
   height: 100%;
   padding: 14px 40px;
   display: block;
-}
-#app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 .page {
   flex: 1 1 auto;

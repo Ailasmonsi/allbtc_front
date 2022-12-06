@@ -99,17 +99,31 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#myChart {
+  @media (max-width: 479.98px) {
+    width: 240px;
+  }
+}
 .graph {
   // .graph__main
   &__main {
     background: rgba(255, 255, 255, 0.29);
     border-radius: 21px;
     padding: 17px;
+    @media (max-width: 479.98px) {
+      margin: 0 -15px;
+      border-radius: 10px;
+    }
   }
   // .graph__con
   &__con {
     display: flex;
     align-items: center;
+    @media (max-width: 767.98px) {
+      padding: 15px 9px;
+    }
+    @media (max-width: 479.98px) {
+    }
   }
   // .graph__graph
   &__graph {
@@ -124,11 +138,20 @@ export default {
     color: rgba(0, 0, 0, 0.4);
     writing-mode: vertical-lr;
     transform: rotate(180deg);
+    @media (max-width: 479.98px) {
+      font-size: 12px;
+    }
   }
   // .graph__list
   &__list {
     display: flex;
     gap: 17px;
+    @media (max-width: 991.98px) {
+      flex-direction: column;
+    }
+    @media (max-width: 767.98px) {
+      gap: 35px;
+    }
   }
   // .graph__item
   &__item {
@@ -136,30 +159,55 @@ export default {
     border-radius: 21px;
     flex: 0 1 50%;
     padding: 28px 36px;
+
+    @media (max-width: 767.98px) {
+      padding: 0;
+    }
+    @media (max-width: 479.98px) {
+      border-radius: 10px;
+    }
   }
 }
 .graph-ia {
   margin-top: 24px;
+  @media (max-width: 767.98px) {
+    margin-top: 9px;
+  }
   // .graph-ia__list
   &__list {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    @media (max-width: 767.98px) {
+      padding: 0 23px 25px;
+    }
+    @media (max-width: 479.98px) {
+      gap: 12px;
+    }
   }
   // .graph-ia__item
   &__item {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 7px;
+    @media (max-width: 479.98px) {
+      flex-direction: column;
+      align-items: start;
+    }
     // .graph-ia__item_title
     &_title {
+      flex: 1 0 50%;
       font-style: normal;
       font-weight: 300;
       font-size: 16px;
       line-height: 158.1%;
       color: #000000;
-
       max-width: 230px;
+      @media (max-width: 767.98px) {
+        font-size: 15px;
+        line-height: 158.1%;
+      }
     }
     // .graph-ia__item_text
     &_text {
@@ -170,14 +218,16 @@ export default {
       line-height: 143.1%;
       color: #000034;
       display: flex;
-      gap: 8px;
+      column-gap: 8px;
+      flex-wrap: wrap;
+      justify-content: end;
+      @media (max-width: 767.98px) {
+        font-size: 15px;
+        line-height: 158.1%;
+      }
 
       & span {
         font-family: "AmpleSoftPro";
-        font-style: normal;
-        font-weight: 500;
-        font-size: 17px;
-        line-height: 143.1%;
         color: #e9c058;
         white-space: nowrap;
       }
