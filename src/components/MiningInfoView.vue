@@ -110,7 +110,6 @@ export default {};
 
 <style lang="scss" scoped>
 .mining-info {
-  padding-bottom: 100px;
   // .mining-info__container
   &__container {
   }

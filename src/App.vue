@@ -23,14 +23,17 @@
   <div class="page">
     <router-view />
   </div>
+  <footer-component />
 </template>
 
 <script>
-import NavLinks from "@/components/NavLinks.vue";
+import NavLinks from "@/components/NavLinks";
+import FooterComponent from "@/components/FooterComponent";
 
 export default {
   components: {
     NavLinks,
+    FooterComponent,
   },
   data() {
     return {
@@ -79,17 +82,19 @@ export default {
     max-width: 138px;
   }
 }
-nav {
-  padding-top: 40px;
+nav.nav__container {
+  position: relative;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 50px;
   width: 100%;
   box-sizing: border-box !important;
-  margin: 15px auto !important;
+  padding: 15px;
+  padding-top: 40px;
   @media (max-width: 991.98px) {
-    padding-top: 0;
+    padding-top: 20px;
   }
   @media (max-width: 767.98px) {
     gap: 15px;
@@ -103,7 +108,7 @@ nav {
     background: #4182ec;
     border-radius: 5px;
     width: 60px;
-    height: 44px;
+    height: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -139,7 +144,7 @@ nav {
     background: rgba(194, 213, 242, 0.61);
     border-radius: 5px;
     width: 60px;
-    height: 44px;
+    height: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
