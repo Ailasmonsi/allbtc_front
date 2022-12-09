@@ -9,29 +9,33 @@
           электроэнергию.
         </div>
       </div>
-      <form class="calculator__form">
+      <div class="calculator__form">
         <input
           type="text"
           class="calculator__input"
           placeholder="Ваш хэшрейт TH/s"
         />
-        <div class="calculator__select_con">
-          <select class="calculator__select">
-            <option value="1" selected>
-              <img src="../assets/img/orange-coin-icon.svg" alt="" />
-              <img src="../assets/img/orange-propeller-icon.svg" alt="" />
-              <p>Bitcoin</p>
-            </option>
-            <option value="2">Пункт №2</option>
-            <option value="3">Пункт №3</option>
-            <option value="4">Пункт №4</option>
-          </select>
-          <div class="arrow"></div>
+        <div class="calculator__select_con" :class="{ open: select_is_open }">
+          <div
+            @click="select_is_open = !select_is_open"
+            class="calculator__select_title"
+          >
+            {{ select_option }}
+          </div>
+          <div class="calculator__select_options">
+            <div
+              v-for="option in calculatorOptions"
+              :key="option.value"
+              class="calculator__select_option"
+            >
+              <p @click="selectOption(option.title)">{{ option.title }}</p>
+            </div>
+          </div>
         </div>
-        <blue-button
-          ><a href="#" class="all-link">Начать майнинг</a></blue-button
-        >
-      </form>
+        <blue-button>
+          <a href="#" class="all-link">Начать майнинг</a>
+        </blue-button>
+      </div>
     </div>
   </div>
 </template>
@@ -41,6 +45,29 @@ import BlueButton from "./UI/BlueButton";
 export default {
   components: {
     BlueButton,
+  },
+  data() {
+    return {
+      calculatorOptions: [
+        { title: "Bitcoin", value: 1 },
+        { title: "Bitcoin Cash", value: 2 },
+        { title: "Litecoin", value: 3 },
+        { title: "Dash", value: 4 },
+      ],
+      select_option: "Bitcoin",
+      select_is_open: false,
+    };
+  },
+  methods: {
+    selectOption(option) {
+      this.select_option = option;
+    },
+    hideSelect() {
+      this.select_is_open = false;
+    },
+  },
+  mounted() {
+    document.addEventListener("click", this.hideSelect.bind(this), true);
   },
 };
 </script>
@@ -125,61 +152,106 @@ export default {
   }
   // .calculator__select
   &__select {
-    @media (max-width: 991.98px) {
-      width: 100%;
-    }
     // .calculator__select_con
     &_con {
       position: relative;
-      width: fit-content;
+      &.open {
+        & .calculator__select_title {
+          pointer-events: none;
+          @media (min-width: 991.98px) {
+            transform: scale(1.05);
+          }
+          &::after {
+            transform: rotate(-180deg);
+          }
+        }
+        & .calculator__select_options {
+          pointer-events: all;
+          opacity: 1;
+          visibility: visible;
+          top: 0px;
+          @media (min-width: 991.98px) {
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+    // .calculator__select_title
+    &_title {
+      cursor: pointer;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      border-radius: 10px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 181.1%;
+      color: #000000;
+      height: 100%;
+      width: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      position: relative;
+      transition: all 0.3s ease 0s, pointer-events 0s;
       @media (max-width: 991.98px) {
+        padding: 14px 20px;
         width: 100%;
       }
-      & .arrow {
-        position: absolute;
+      &::after {
+        content: "";
         background-image: url("../assets/img/arrow-down-icon-blue.svg");
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
         width: 18px;
         height: 18px;
-        top: 50%;
-        right: 20px;
-        transform: translate(0, -50%);
         transition: all 0.3s ease 0s;
       }
     }
-    &:focus-within ~ .arrow {
-      transform: translate(0, -50%) rotate(-180deg);
+    // .calculator__select_options
+    &_options {
+      pointer-events: none;
+      position: absolute;
+      z-index: 2;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      border-radius: 10px;
+      width: 100%;
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      top: -10px;
+      transition: all 0.3s ease 0s, pointer-events 0s 0.3s;
     }
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    appearance: none;
-    outline: 0;
-    box-shadow: none;
-    border: 0 !important;
-    background-image: none;
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.16);
-    border-radius: 10px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 181.1%;
-    color: #000000;
-    padding: 14px 30px;
-    min-width: 300px;
-    & option {
+    // .calculator__select_option
+    &_option {
+      cursor: pointer;
       font-style: normal;
-      font-weight: 300;
+      font-weight: 400;
       font-size: 18px;
       line-height: 181.1%;
-      color: rgba(0, 0, 0, 0.72);
-      border: 1px solid red;
-    }
-    &::-ms-expand {
-      display: none;
+      color: #000000;
+      display: flex;
+      flex-direction: column;
+      & p {
+        padding: 0 20px;
+      }
+      &:not(:last-child) {
+        &::after {
+          content: "";
+          width: 100%;
+          height: 1px;
+          background: rgba(0, 0, 0, 0.09);
+        }
+      }
+      transition: all 0.3s ease 0s;
+      &:hover,
+      &:active {
+        color: #fff;
+        background: #3f7bdd;
+      }
     }
   }
 }

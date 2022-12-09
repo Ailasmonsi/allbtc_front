@@ -77,7 +77,7 @@
           </li>
         </ul>
       </div>
-      <div class="footer__quote">© 2022 GIS Pool</div>
+      <div class="footer__quote">© 2022 Allbtc Pool</div>
     </div>
   </footer>
 </template>
